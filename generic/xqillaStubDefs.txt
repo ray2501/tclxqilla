@@ -1,0 +1,12 @@
+# xqillaStubDefs.txt --
+#
+#	Definitions of routines in the XQilla libraries that will be
+#	resolved and imported at run time.
+#
+#-----------------------------------------------------------------------------
+
+* STUBSTRUCT: xqillaStubs
+* LIBRARY: libxqilla
+
+XQC_Implementation* createXQillaXQCImplementation(int version);
+
