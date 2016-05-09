@@ -33,13 +33,13 @@ Apache License, Version 2.0
 Commands
 =====
 
-xqilla HANDLE ?-doc XML_DOC? 
-HANDLE prepare xquery_string
-HANDLE close
-EXPR_HANDLE execute
-EXPR_HANDLE close
-RESULT_HANDLE next
-RESULT_HANDLE string_value
+xqilla HANDLE ?-doc XML_DOC?   
+HANDLE prepare xquery_string  
+HANDLE close  
+EXPR_HANDLE execute  
+EXPR_HANDLE close  
+RESULT_HANDLE next  
+RESULT_HANDLE string_value  
 RESULT_HANDLE close
 
 
