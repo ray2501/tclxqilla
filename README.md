@@ -70,7 +70,7 @@ below is an example:
     $ make install
 
 
-NDOWS BUILD
+WINDOWS BUILD
 =====
 
 I do not test this extension on Windows platform.
