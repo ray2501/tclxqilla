@@ -21,7 +21,7 @@ Below is an example on Linux platform to setup LD_LIBRARY_PATH environment varia
 
 Below is an example on Windows platform:
 
-    set PATH=C:\Program Files\MonetDB\MonetDB5\bin;%PATH%
+    set PATH=C:\msys64\usr\bin;%PATH%
 
 
 License
