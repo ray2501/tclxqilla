@@ -21,7 +21,7 @@ Below is an example on Linux platform to setup LD_LIBRARY_PATH environment varia
 
 Below is an example on Windows platform:
 
-    set PATH=C:\msys64\usr\bin;%PATH%
+    set PATH=C:\xqilla\bin;%PATH%
 
 
 License
@@ -73,7 +73,67 @@ below is an example:
 WINDOWS BUILD
 =====
 
-I do not test this extension on Windows platform.
+I use MSYS2 to test build on Windows platform.
+
+Step 1. Download a source distribution of Xerces-C 3.1.3
+
+Step 2. Build Xerces-C
+
+Need check [this link] (http://mail-archives.apache.org/mod_mbox/xerces-c-users/201111.mbox/%3Cboris.20111103155709@codesynthesis.com%3E),
+so do below steps:
+
+cd xerces-c-3.1.3/  
+./configure --prefix=/c/xqilla --enable-shared --with-gnu-ld  
+make libxerces_c_la_LDFLAGS="-release 3.1 -no-undefined"  
+
+Then use `make install` to install.
+
+Step 3. Download a source distribution of XQilla 2.3.3.
+
+Step 4. Build XQilla
+
+cd XQilla-2.3.3  
+CFLAGS="-DXQILLA_APIS" ./configure --prefix=/c/xqilla --with-xerces=\`pwd\`/../xerces-c-3.1.3/ --enable-shared --with-gnu-ld  
+
+Update include/xqilla/xqilla-xqc.h, we need export `createXQillaXQCImplementation` function on Windows platform.
+
+    #if defined(WIN32) && !defined(__CYGWIN__)
+    #    if defined(XQILLA_APIS)
+    #      define XQC_API __declspec(dllexport)
+    #    else
+    #      define XQC_API __declspec(dllimport)
+    #    endif
+    #else
+    #  define XQC_API 
+    #endif
+
+    /**
+     * Creates an XQC_Implementation object that uses XQilla.
+     */
+    XQC_API XQC_Implementation *createXQillaXQCImplementation(int version);
+
+And update tests/xmark/xmark.cpp, to fix build fail (_MSC_VER to WIN32):
+
+    #ifdef WIN32
+      tm_p = localtime(&tt);
+    #else
+      struct tm tm;
+      tm_p = &tm;
+      localtime_r(&tt, &tm);
+    #endif
+    
+make
+
+Then use `make install` to install.
+
+I don't know how to handle dll file name correctly. So just copy the `libxqilla-3.dll` file to `libxqilla.dll`. And copy the libgcc_s_seh-1.dll and libstdc++-6.dll files to the same location.
+
+Step 5. Build this extension
+
+$ cd tclxqilla  
+$ CFLAGS="-I/c/xqilla/include" ./configure --with-tcl=/c/tcl/lib  
+$ make  
+$ make install
 
 
 Examples
