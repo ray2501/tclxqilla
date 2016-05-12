@@ -11,7 +11,7 @@ Group:         Development/Libraries/Tcl
 Source:        https://sites.google.com/site/ray2501/tclxqilla/tclxqilla_0.1.zip
 URL:           https://sites.google.com/site/ray2501/tclxqilla
 Buildrequires: tcl >= 8.6
-Buildrequires: libxqilla-devel
+Buildrequires: xqilla-devel
 BuildRoot:     %{buildroot}
 
 %description
