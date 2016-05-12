@@ -40,6 +40,9 @@ EXPR_HANDLE execute
 EXPR_HANDLE close  
 RESULT_HANDLE next  
 RESULT_HANDLE string_value  
+RESULT_HANDLE integer_value  
+RESULT_HANDLE double_value  
+RESULT_HANDLE type_name  
 RESULT_HANDLE close
 
 
