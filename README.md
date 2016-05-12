@@ -24,6 +24,12 @@ Below is an example on Windows platform:
     set PATH=C:\xqilla\bin;%PATH%
 
 
+Documentation
+=====
+
+ * [XQC API (C API)] (http://xqilla.sourceforge.net/XQCAPI)
+
+
 License
 =====
 
@@ -43,6 +49,7 @@ RESULT_HANDLE string_value
 RESULT_HANDLE integer_value  
 RESULT_HANDLE double_value  
 RESULT_HANDLE type_name  
+RESULT_HANDLE node_name  
 RESULT_HANDLE close
 
 

@@ -116,6 +116,7 @@ static int XQILLA_RESULT(void *cd, Tcl_Interp *interp, int objc,Tcl_Obj *const*o
     "integer_value",
     "double_value",
     "type_name",
+    "node_name",
     "close",
     0
   };
@@ -125,6 +126,7 @@ static int XQILLA_RESULT(void *cd, Tcl_Interp *interp, int objc,Tcl_Obj *const*o
     RSTS_INTEGER_VALUE,
     RSTS_DOUBLE_VALUE,
     RSTS_TYPE_NAME,
+    RSTS_NODE_NAME,
     RSTS_CLOSE,
   };
 
@@ -228,6 +230,33 @@ static int XQILLA_RESULT(void *cd, Tcl_Interp *interp, int objc,Tcl_Obj *const*o
       const char *url = NULL, *type = NULL;
 
       err = pResult->result->type_name(pResult->result, &url, &type);
+      if(err == XQC_NO_ERROR) {
+          return_obj = Tcl_NewListObj(0, NULL);
+          if(!url) {
+            Tcl_ListObjAppendElement(interp, return_obj, Tcl_NewStringObj("", -1));
+          } else {
+            Tcl_ListObjAppendElement(interp, return_obj, Tcl_NewStringObj(url, -1));
+          }
+
+          if(!type) {
+            Tcl_ListObjAppendElement(interp, return_obj, Tcl_NewStringObj("", -1));
+          } else {
+            Tcl_ListObjAppendElement(interp, return_obj, Tcl_NewStringObj(type, -1));
+          }
+      } else {
+          return TCL_ERROR;
+      }
+
+      Tcl_SetObjResult(interp, return_obj);
+      break;
+    }
+
+    case RSTS_NODE_NAME: {
+      XQC_Error err;
+      Tcl_Obj *return_obj;
+      const char *url = NULL, *type = NULL;
+
+      err = pResult->result->node_name(pResult->result, &url, &type);
       if(err == XQC_NO_ERROR) {
           return_obj = Tcl_NewListObj(0, NULL);
           if(!url) {
