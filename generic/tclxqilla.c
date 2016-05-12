@@ -113,12 +113,14 @@ static int XQILLA_RESULT(void *cd, Tcl_Interp *interp, int objc,Tcl_Obj *const*o
   static const char *RSTS_strs[] = {
     "next",
     "string_value",
+    "type_name",
     "close",
     0
   };
   enum RSTS_enum {
     RSTS_NEXT,
     RSTS_STRING_VALUE,
+    RSTS_TYPE_NAME,
     RSTS_CLOSE,
   };
 
@@ -173,6 +175,33 @@ static int XQILLA_RESULT(void *cd, Tcl_Interp *interp, int objc,Tcl_Obj *const*o
           return_obj = Tcl_NewStringObj("", -1);
       } else {
           return_obj = Tcl_NewStringObj(value, -1);
+      }
+
+      Tcl_SetObjResult(interp, return_obj);
+      break;
+    }
+
+    case RSTS_TYPE_NAME: {
+      XQC_Error err;
+      Tcl_Obj *return_obj;
+      const char *url = NULL, *type = NULL;
+
+      err = pResult->result->type_name(pResult->result, &url, &type);
+      if(err == XQC_NO_ERROR) {
+          return_obj = Tcl_NewListObj(0, NULL);
+          if(!url) {
+            Tcl_ListObjAppendElement(interp, return_obj, Tcl_NewStringObj("", -1));
+          } else {
+            Tcl_ListObjAppendElement(interp, return_obj, Tcl_NewStringObj(url, -1));
+          }
+
+          if(!type) {
+            Tcl_ListObjAppendElement(interp, return_obj, Tcl_NewStringObj("", -1));
+          } else {
+            Tcl_ListObjAppendElement(interp, return_obj, Tcl_NewStringObj(type, -1));
+          }
+      } else {
+          return TCL_ERROR;
       }
 
       Tcl_SetObjResult(interp, return_obj);
