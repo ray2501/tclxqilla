@@ -113,6 +113,8 @@ static int XQILLA_RESULT(void *cd, Tcl_Interp *interp, int objc,Tcl_Obj *const*o
   static const char *RSTS_strs[] = {
     "next",
     "string_value",
+    "integer_value",
+    "double_value",
     "type_name",
     "close",
     0
@@ -120,6 +122,8 @@ static int XQILLA_RESULT(void *cd, Tcl_Interp *interp, int objc,Tcl_Obj *const*o
   enum RSTS_enum {
     RSTS_NEXT,
     RSTS_STRING_VALUE,
+    RSTS_INTEGER_VALUE,
+    RSTS_DOUBLE_VALUE,
     RSTS_TYPE_NAME,
     RSTS_CLOSE,
   };
@@ -167,14 +171,51 @@ static int XQILLA_RESULT(void *cd, Tcl_Interp *interp, int objc,Tcl_Obj *const*o
     }
 
     case RSTS_STRING_VALUE: {
+      XQC_Error err;
       Tcl_Obj *return_obj;
       const char *value = NULL;
 
-      pResult->result->string_value(pResult->result, &value);
-      if(!value) {
+      err = pResult->result->string_value(pResult->result, &value);
+      if(err == XQC_NO_ERROR) {
+        if(!value) {
           return_obj = Tcl_NewStringObj("", -1);
-      } else {
+        } else {
           return_obj = Tcl_NewStringObj(value, -1);
+        }
+      } else {
+          return TCL_ERROR;
+      }
+
+      Tcl_SetObjResult(interp, return_obj);
+      break;
+    }
+
+    case RSTS_INTEGER_VALUE: {
+      XQC_Error err;
+      Tcl_Obj *return_obj;
+      int value = 0;
+
+      err = pResult->result->integer_value(pResult->result, &value);
+      if(err == XQC_NO_ERROR) {
+          return_obj = Tcl_NewIntObj(value);
+      } else {
+          return TCL_ERROR;
+      }
+
+      Tcl_SetObjResult(interp, return_obj);
+      break;
+    }
+
+    case RSTS_DOUBLE_VALUE: {
+      XQC_Error err;
+      Tcl_Obj *return_obj;
+      double value = 0.0;
+
+      err = pResult->result->double_value(pResult->result, &value);
+      if(err == XQC_NO_ERROR) {
+          return_obj = Tcl_NewDoubleObj(value);
+      } else {
+          return TCL_ERROR;
       }
 
       Tcl_SetObjResult(interp, return_obj);
