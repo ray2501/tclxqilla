@@ -1,17 +1,17 @@
 tclxqilla
 =====
 
-[XQilla] (http://xqilla.sourceforge.net/HomePage) is an XQuery and XPath 2 library
+[XQilla](http://xqilla.sourceforge.net/HomePage) is an XQuery and XPath 2 library
 and command line utility written in C++,
-implemented on top of the [Xerces-C] (http://xerces.apache.org/xerces-c/index.html) library.
+implemented on top of the [Xerces-C](http://xerces.apache.org/xerces-c/index.html) library.
 It is made available under the terms of the Apache License v2.
 
-XQilla's [XQC API] (http://xqc.sourceforge.net/) implements a standard C API for XQuery implementations,
+XQilla's [XQC API](http://xqc.sourceforge.net/) implements a standard C API for XQuery implementations,
 defined in collaboration with the Zorba project.
 
 tclxqilla is a Tcl extension to use XQilla XQC API to execute XQuery expression.
 
-This extension is using [Tcl_LoadFile] (https://www.tcl.tk/man/tcl/TclLib/Load.htm) to
+This extension is using [Tcl_LoadFile](https://www.tcl.tk/man/tcl/TclLib/Load.htm) to
 load XQilla library.
 
 Before using this extension, please setup XQilla library path environment variable.
@@ -27,7 +27,7 @@ Below is an example on Windows platform:
 Documentation
 =====
 
- * [XQC API (C API)] (http://xqilla.sourceforge.net/XQCAPI)
+ * [XQC API (C API)](http://xqilla.sourceforge.net/XQCAPI)
 
 
 License
@@ -89,7 +89,7 @@ Step 1. Download a source distribution of Xerces-C 3.1.3
 
 Step 2. Build Xerces-C
 
-Need check [this link] (http://mail-archives.apache.org/mod_mbox/xerces-c-users/201111.mbox/%3Cboris.20111103155709@codesynthesis.com%3E),
+Need check [this link](http://mail-archives.apache.org/mod_mbox/xerces-c-users/201111.mbox/%3Cboris.20111103155709@codesynthesis.com%3E),
 so do below steps:
 
 cd xerces-c-3.1.3/  
