@@ -28,15 +28,15 @@ This extension is using Tcl_LoadFile to load XQilla library.
 CFLAGS="%optflags" ./configure \
 	--prefix=%{directory} \
 	--exec-prefix=%{directory} \
-	--libdir=%{directory}/%{_lib}/tcl
+	--libdir=%{directory}/%{_lib}
 make 
 
 %install
-make DESTDIR=%{buildroot} pkglibdir=%{directory}/%{_lib}/tcl/%{name}%{version} install
+make DESTDIR=%{buildroot} pkglibdir=%{tcl_archdir}/%{name}%{version} install
 
 %clean
 rm -rf %buildroot
 
 %files
 %defattr(-,root,root)
-%{directory}/%{_lib}/tcl
+%{tcl_archdir}
