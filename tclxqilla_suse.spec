@@ -14,6 +14,8 @@ BuildRequires: autoconf
 BuildRequires: make
 BuildRequires: tcl-devel >= 8.6
 BuildRequires: xqilla-devel
+Requires:      xqilla
+Requires:      tcl >= 8.6
 BuildRoot:     %{buildroot}
 
 %description
