@@ -8,7 +8,7 @@ Version:       0.1.2
 Release:       2
 License:       Apache-2.0
 Group:         Development/Libraries/Tcl
-Source:        tclxqilla_0.1.2.tar.gz
+Source:        %{name}-%{version}.tar.gz
 URL:           https://sites.google.com/site/ray2501/tclxqilla
 BuildRequires: autoconf
 BuildRequires: make
@@ -24,7 +24,7 @@ It is a Tcl extension for XQilla library.
 This extension is using Tcl_LoadFile to load XQilla library.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{version}
 
 %build
 CFLAGS="%optflags" ./configure \
