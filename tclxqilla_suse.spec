@@ -6,9 +6,9 @@ Name:          tclxqilla
 Summary:       Tcl extension for XQilla library
 Version:       0.1.2
 Release:       2
-License:       Apache License, Version 2.0
+License:       Apache-2.0
 Group:         Development/Libraries/Tcl
-Source:        https://sites.google.com/site/ray2501/tclxqilla/tclxqilla_0.1.2.zip
+Source:        tclxqilla_0.1.2.tar.gz
 URL:           https://sites.google.com/site/ray2501/tclxqilla
 BuildRequires: autoconf
 BuildRequires: make
