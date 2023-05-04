@@ -9,7 +9,7 @@ Release:       2
 License:       Apache-2.0
 Group:         Development/Libraries/Tcl
 Source:        %{name}-%{version}.tar.gz
-URL:           https://sites.google.com/site/ray2501/tclxqilla
+URL:           https://github.com/ray2501/tclxqilla
 BuildRequires: autoconf
 BuildRequires: make
 BuildRequires: tcl-devel >= 8.6
