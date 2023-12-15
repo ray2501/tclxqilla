@@ -4,7 +4,7 @@
  *	Stubs tables for the foreign XQilla libraries so that
  *	Tcl extensions can use them without the linker's knowing about them.
  *
- * @CREATED@ 2018-01-09 14:15:51Z by genExtStubs.tcl from xqillaStubDefs.txt
+ * @CREATED@ 2023-12-15 04:27:13Z by genExtStubs.tcl from xqillaStubDefs.txt
  *
  *-----------------------------------------------------------------------------
  */
@@ -26,7 +26,7 @@
  */
 
 static const char *const xqillaSuffixes[] = {
-    "", ".3", NULL
+    "", ".2", ".3", NULL
 };
 
 /*
