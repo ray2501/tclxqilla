@@ -4,7 +4,7 @@
 
 Name:          tclxqilla
 Summary:       Tcl extension for XQilla library
-Version:       0.1.2
+Version:       0.1.3
 Release:       2
 License:       Apache-2.0
 Group:         Development/Libraries/Tcl
